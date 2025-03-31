@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { div } from 'framer-motion/client';
 import {  Mail, ExternalLink, Code, Server, Database, Globe, Cpu, Shield, Package, Terminal, ChevronRight, Phone } from 'lucide-react';
 import {FaGithub as Github, FaLinkedin as Linkedin } from 'react-icons/fa';
 
@@ -99,12 +98,6 @@ const education = [
     gpa: 'CGPA: 10.0'
   }
 ];
-
-const certifications = [
-  { name: 'Full Stack Web Development', issuer: '100Xdevs' },
-  { name: 'Python Programming Essentials', issuer: 'NXT WAVE' },
-  { name: 'SQL Certification', issuer: 'NXT WAVE' }
-]
 
 export default function Portfolio() {
   const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
@@ -242,7 +235,7 @@ export default function Portfolio() {
             </h2>
             <div className="space-y-4 text-gray-700">
               <p className="text-lg leading-relaxed">
-                I'm a passionate <span className="font-semibold text-blue-600">Full Stack Developer</span> with expertise in building scalable web applications using modern technologies like React.js, Node.js, and MongoDB. My journey in tech combines strong problem-solving skills with a keen eye for performance optimization.
+                {" I'm a passionate"} <span className="font-semibold text-blue-600">Full Stack Developer</span> with expertise in building scalable web applications using modern technologies like React.js, Node.js, and MongoDB. My journey in tech combines strong problem-solving skills with a keen eye for performance optimization.
               </p>
               <p className="text-lg leading-relaxed">
                 What sets me apart is my ability to design <span className="font-semibold text-indigo-600">secure authentication systems</span> and implement <span className="font-semibold text-blue-600">RESTful APIs</span> that power seamless user experiences. I take pride in writing clean, maintainable code that stands the test of scale.
