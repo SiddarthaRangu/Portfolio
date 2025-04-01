@@ -474,96 +474,112 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-2 text-gray-900">Get In Touch</h2>
-            <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
-            <p className="text-gray-600 max-w-2xl mx-auto mt-4">
-              Feel free to reach out for collaborations or just to say hello!
-            </p>
-          </div>
+<section id="contact" className="py-20 px-4 bg-white">
+  <div className="max-w-6xl mx-auto">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl font-bold mb-2 text-gray-900">Get In Touch</h2>
+      <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+      <p className="text-gray-600 max-w-2xl mx-auto mt-4">
+        Feel free to reach out for collaborations or just to say hello!
+      </p>
+    </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="space-y-6">
-              <div className="flex items-start p-6 bg-gray-50 rounded-lg border border-gray-200">
-                <Mail className="w-5 h-5 text-blue-600 mr-4 mt-1" />
-                <div>
-                  <h4 className="text-lg font-bold mb-1">Email</h4>
-                  <a href="mailto:siddartharangu@gmail.com" className="text-gray-600 hover:text-blue-600">
-                    siddartharangu@gmail.com
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-start p-6 bg-gray-50 rounded-lg border border-gray-200">
-                <Phone className="w-5 h-5 text-blue-600 mr-4 mt-1" />
-                <div>
-                  <h4 className="text-lg font-bold mb-1">Phone</h4>
-                  <a href="tel:+916309751826" className="text-gray-600 hover:text-blue-600">
-                    +91 6309751826
-                  </a>
-                </div>
-              </div>
-              <div className="flex gap-4 justify-center md:justify-start">
-                <a
-  href="https://github.com/SiddarthaRangu"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-block text-gray-600 hover:text-blue-600 mx-2"
->
-  <Github size={24} />
-</a>
-<a
-  href="https://www.linkedin.com/in/siddartharangu"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-block text-gray-600 hover:text-blue-600 mx-2"
->
-  <Linkedin size={24} />
-</a>
-              </div>
-            </div>
-
-            <form className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
-                  placeholder="Your email"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
-                  placeholder="Your message"
-                ></textarea>
-              </div>
-              <motion.button
-                type="submit"
-                className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Send Message
-              </motion.button>
-            </form>
+    <div className="grid md:grid-cols-2 gap-12">
+      <div className="space-y-6">
+        <div className="flex items-start p-6 bg-gray-50 rounded-lg border border-gray-200">
+          <Mail className="w-5 h-5 text-blue-600 mr-4 mt-1" />
+          <div>
+            <h4 className="text-lg font-bold mb-1">Email</h4>
+            <a href="mailto:siddartharangu@gmail.com" className="text-gray-600 hover:text-blue-600">
+              siddartharangu@gmail.com
+            </a>
           </div>
         </div>
-      </section>
+        <div className="flex items-start p-6 bg-gray-50 rounded-lg border border-gray-200">
+          <Phone className="w-5 h-5 text-blue-600 mr-4 mt-1" />
+          <div>
+            <h4 className="text-lg font-bold mb-1">Phone</h4>
+            <a href="tel:+916309751826" className="text-gray-600 hover:text-blue-600">
+              +91 6309751826
+            </a>
+          </div>
+        </div>
+        <div className="flex gap-4 justify-center md:justify-start">
+          <a
+            href="https://github.com/SiddarthaRangu"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block text-gray-600 hover:text-blue-600 mx-2"
+          >
+            <Github size={24} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/siddartharangu"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block text-gray-600 hover:text-blue-600 mx-2"
+          >
+            <Linkedin size={24} />
+          </a>
+        </div>
+      </div>
+
+      <form 
+  action="https://formsubmit.co/siddartharangu@gmail.com" 
+  method="POST"
+  className="space-y-4"
+>
+  {/* Redirect to home section after submission */}
+  <input type="hidden" name="_next" value="https://siddartha-portfolio.vercel.app/#home" /> 
+  
+  {/* Auto-response email */}
+  <input type="hidden" name="_autoresponse" value="Thank you for your message! I'll get back to you soon. - Siddartha Rangu" />
+        
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+            placeholder="Your name"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+            placeholder="Your email"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows={4}
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+            placeholder="Your message"
+            required
+          ></textarea>
+        </div>
+        <motion.button
+          type="submit"
+          className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          Send Message
+        </motion.button>
+      </form>
+    </div>
+  </div>
+</section>
 
       <footer className="py-8 bg-gray-50 border-t border-gray-200">
         <div className="max-w-6xl mx-auto px-4 text-center text-gray-500">
