@@ -285,7 +285,7 @@ export default function Portfolio() {
           Frontend Development
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {['React.js', 'JavaScript', 'HTML5/CSS3', 'Tailwind CSS', 'Bootstrap'].map((skill, index) => (
+          {['React.js','Redux', 'JavaScript', 'HTML5/CSS3', 'Tailwind CSS', 'Bootstrap'].map((skill, index) => (
             <motion.div
               key={skill}
               initial={{ opacity: 0, y: 20 }}
