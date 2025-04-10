@@ -3,9 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {  Mail, ExternalLink, Code, Server, Database, Globe, Cpu, Shield, Package, Terminal, ChevronRight, Phone } from 'lucide-react';
 import {FaGithub as Github, FaLinkedin as Linkedin } from 'react-icons/fa';
+import { link } from 'fs';
 
 const rotatingSkills = [
   { name: 'React.js', color: 'text-blue-500' },
+  { name: 'Redux', color: 'text-purple-600' },
   { name: 'Node.js', color: 'text-green-500' },
   { name: 'MongoDB', color: 'text-emerald-500' },
   { name: 'JavaScript (ES6+)', color: 'text-yellow-500' },
@@ -20,6 +22,17 @@ const rotatingSkills = [
 ];
 
 const projects = [
+  {
+    title: 'E-commerce Website',
+    description: 'Full-fledged e-commerce platform with product management.',
+    technologies: ['React.js', 'Redux', 'Tailwind Css', 'FakeStore API'],
+    highlights: [
+      'Dynamic product listings with Redux',
+      'Designed pagination system with React Context API',
+      'Responsive design with Tailwind CSS'
+    ],
+    link:'https://shopping-lac-beta-68.vercel.app/'
+  },
   {
     title: 'Payments Transfer App',
     description: 'Secure money transfer application with RESTful APIs for account management and transactions.',
@@ -284,6 +297,7 @@ export default function Portfolio() {
               <div className="flex items-center gap-3">
                 <div className="p-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
                   {skill === 'React.js' && <Code className="w-5 h-5" />}
+                  {skill === 'Redux' && <Code className="w-5 h-5" />}
                   {skill === 'JavaScript' && <Globe className="w-5 h-5" />}
                   {skill === 'HTML5/CSS3' && <Globe className="w-5 h-5" />}
                   {skill === 'Tailwind CSS' && <Package className="w-5 h-5" />}
