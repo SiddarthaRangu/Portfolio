@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {  Mail, ExternalLink, Code, Server, Database, Globe, Cpu, Shield, Package, Terminal, ChevronRight, Phone } from 'lucide-react';
 import {FaGithub as Github, FaLinkedin as Linkedin } from 'react-icons/fa';
-import { link } from 'fs';
+
 
 const rotatingSkills = [
   { name: 'React.js', color: 'text-blue-500' },
