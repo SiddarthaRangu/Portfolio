@@ -163,6 +163,16 @@ const itemVariants = {
 export default function Portfolio() {
   const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
 
+  // --- START: NEW STATE FOR CONTACT FORM ---
+  const [formState, setFormState] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [submissionStatus, setSubmissionStatus] = useState('idle'); // 'idle', 'sending', 'success', 'error'
+  const [statusMessage, setStatusMessage] = useState('');
+  // --- END: NEW STATE FOR CONTACT FORM ---
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSkillIndex((prev) => (prev + 1) % rotatingSkills.length);
@@ -172,6 +182,42 @@ export default function Portfolio() {
 
   const timelineRef = React.useRef(null);
   const isTimelineInView = useInView(timelineRef, { once: true, amount: 0.5 });
+
+  // --- START: NEW FORM HANDLER FUNCTION ---
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const { name, value } = e.target;
+  setFormState((prev) => ({ ...prev, [name]: value }));
+};
+
+  const handleFormSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    setSubmissionStatus('sending');
+    setStatusMessage('Sending your message...');
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
+      });
+
+      if (response.ok) {
+        setSubmissionStatus('success');
+        setStatusMessage('Thank you! Your message has been sent.');
+        setFormState({ name: '', email: '', message: '' }); // Reset form
+      } else {
+        throw new Error('Something went wrong on the server.');
+      }
+    } catch (error) {
+      setSubmissionStatus('error');
+      setStatusMessage('Sorry, something went wrong. Please try again later.');
+      console.error('Form submission error:', error);
+    }
+  };
+  // --- END: NEW FORM HANDLER FUNCTION ---
+
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 font-sans">
@@ -234,8 +280,7 @@ export default function Portfolio() {
                 <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">About & Experience</h2>
                 <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full mb-12"></div>
                 <motion.p className="text-center text-lg text-gray-700 leading-relaxed mb-16" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-                  I&apos;m a passionate Full Stack Developer with hands-on experience in the MERN stack and building production-level Next.js applications. My focus is on creating scalable, high-performance web solutions with a strong emphasis on clean code and great user experiences. I thrive on solving complex problems and continuously learning new technologies.                </motion.p>
-                <div ref={timelineRef} className="relative pl-4">
+                    I&apos;m a passionate Full Stack Developer with hands-on experience in the MERN stack and building production-level Next.js applications. My focus is on creating scalable, high-performance web solutions with a strong emphasis on clean code and great user experiences. I thrive on solving complex problems and continuously learning new technologies. </motion.p>               <div ref={timelineRef} className="relative pl-4">
                     <div className="absolute left-4 top-5 h-full w-0.5 bg-gray-200 md:left-5">
                       <motion.div className="w-full bg-blue-500" style={{ height: isTimelineInView ? "90%" : "0%" }} transition={{ duration: 1, ease: "circOut" }}/>
                     </div>
@@ -367,7 +412,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Contact Section */}
+        {/* --- START: UPDATED Contact Section --- */}
         <section id="contact" className="py-20 px-4 bg-white">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">Get In Touch</h2>
@@ -386,25 +431,32 @@ export default function Portfolio() {
                   <a href="https://www.linkedin.com/in/siddartha-rangu/" target="_blank" rel="noopener noreferrer" className="inline-block text-gray-600 hover:text-blue-600"><FaLinkedin size={28} /></a>
                 </div>
               </motion.div>
-              <motion.form action="https://formsubmit.co/siddartharangu@gmail.com" method="POST" className="space-y-4" initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-                <input type="hidden" name="_next" value="https://siddartha-portfolio.vercel.app/" />
-                <input type="hidden" name="_autoresponse" value="Thank you for your message! I&apos;ll get back to you soon. - Siddartha Rangu" />                <div>
+              <motion.form onSubmit={handleFormSubmit} className="space-y-4" initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+                <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                  <input type="text" id="name" name="name" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition" placeholder="Your name" required />
+                  <input type="text" id="name" name="name" value={formState.name} onChange={handleInputChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition" placeholder="Your name" required />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                  <input type="email" id="email" name="email" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition" placeholder="Your email" required />
+                  <input type="email" id="email" name="email" value={formState.email} onChange={handleInputChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition" placeholder="Your email" required />
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                  <textarea id="message" name="message" rows={4} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition" placeholder="Your message" required></textarea>
+                  <textarea id="message" name="message" rows={4} value={formState.message} onChange={handleInputChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition" placeholder="Your message" required></textarea>
                 </div>
-                <motion.button type="submit" className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>Send Message</motion.button>
+                <motion.button type="submit" disabled={submissionStatus === 'sending'} className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  {submissionStatus === 'sending' ? 'Sending...' : 'Send Message'}
+                </motion.button>
+                {statusMessage && (
+                  <p className={`text-sm text-center mt-4 ${submissionStatus === 'error' ? 'text-red-500' : 'text-green-600'}`}>
+                    {statusMessage}
+                  </p>
+                )}
               </motion.form>
             </div>
           </div>
         </section>
+        {/* --- END: UPDATED Contact Section --- */}
 
         <footer className="py-8 bg-gray-100 border-t border-gray-200">
           <div className="max-w-6xl mx-auto px-4 text-center text-gray-500">
