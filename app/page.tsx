@@ -234,7 +234,7 @@ export default function Portfolio() {
               </motion.a>
             ))}
           </div>
-          <motion.a href="https://drive.google.com/file/d/1Fnsjz0yLqMHK-gYBdD2VgymzNn0g2zsz/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity shadow-md flex items-center gap-2" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+          <motion.a href="https://drive.google.com/file/d/1VSih2mHsoLA47ct86CqGaHKQsv3N9ssL/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity shadow-md flex items-center gap-2" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
             Resume
           </motion.a>
         </div>
